@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reservar Gimnasio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="reservation-section">
+    <h2>Seleccione la fecha para reservar:</h2>
+
+    <!-- Selector de fecha -->
+    <ion-item>
+      <ion-datetime
+        [min]="minDate"
+        (ionChange)="onDateChange($event)"
+        [highlightedDates]="highlightedDates"
+        presentation="date">
+      </ion-datetime>
+    </ion-item>
+
+    <!-- Botón para reservar con spinner de carga -->
+    <ion-button expand="full" (click)="reservar()">RESERVAR</ion-button>
+  </div>
+
+  <!-- Lista de reservas con scroll -->
+  <div class="reservations-list" style="max-height: 400px; overflow-y: scroll;">
+    <h2>Reservas:</h2>
+    <ion-list>
+      <ion-item *ngFor="let reserva of reservationsList">
+        <ion-label class="reservation-label">
+          <p class="reservation-date">{{ reserva.date.split('T')[0] }}</p>
+          <p class="reservation-user">Cliente: {{ reserva.user || 'Sin información' }}</p>
+        </ion-label>
+        <ion-button *ngIf="reserva.user === currentUserEmail && reserva.id"
+                    (click)="cancelarReserva(reserva.id!)"
+                    color="danger" fill="solid" shape="round" size="small">
+          Cancelar
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

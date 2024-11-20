@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gestión de Noticias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Agregar Nueva Noticia</h2>
+  <input type="file" (change)="onFileSelected($event)">
+  <ion-textarea [(ngModel)]="description" placeholder="Descripción"></ion-textarea>
+  <ion-button (click)="uploadNews()">Subir Noticia</ion-button>
+
+  <h2>Noticias Actuales</h2>
+  <ion-list>
+    <ion-item *ngFor="let news of newsList">
+      <img [src]="news.imageBase64" alt="Noticia" style="width: 100%;">
+      <p>{{ news.description }}</p>
+      <ion-button color="danger" (click)="deleteNews(news.id)">Eliminar</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

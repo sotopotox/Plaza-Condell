@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Subir Noticias</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="upload-section">
+    <h2>Agregar Nueva Noticia</h2>
+    <input type="file" (change)="onFileSelected($event)">
+    <ion-textarea [(ngModel)]="description" placeholder="Escribe una descripción"></ion-textarea>
+    <ion-button expand="block" (click)="uploadNews()">Subir Noticia</ion-button>
+  </div>
+</ion-content>

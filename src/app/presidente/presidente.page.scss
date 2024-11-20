@@ -1,0 +1,41 @@
+.president-letter {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Georgia', serif;
+  }
+  
+  .letter-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .letter-content {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .greeting {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  
+  .closing {
+    margin-top: 30px;
+    font-style: italic;
+  }
+  
+  .signature {
+    text-align: right;
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inicio</ion-title>
+    <ion-buttons slot="end">
+      <!-- Botón para "Palabras del Presidente" -->
+      <ion-button routerLink="/presidente">Palabras del Presidente</ion-button>
+
+      <!-- Botón para iniciar sesión, visible solo si no estás logueado -->
+      <ion-button *ngIf="!isLoggedIn" routerLink="/login">Iniciar Sesión</ion-button>
+
+      <!-- Opciones para clientes visibles solo si son clientes -->
+      <ion-button *ngIf="isCliente" routerLink="/certificado">Descargar Certificado</ion-button>
+      <ion-button *ngIf="isCliente" routerLink="/gym-reservation">Reservar Gimnasio</ion-button>
+
+      <!-- Opciones para administradores -->
+      <ion-button *ngIf="isLoggedIn && isAdmin" routerLink="/register">Registrar Usuario</ion-button>
+      <ion-button *ngIf="isAdmin" routerLink="/users">Gestión de Usuarios</ion-button>
+      <ion-button *ngIf="isAdmin" routerLink="/gym-reservation-history">Registro de Reservas</ion-button>
+      <ion-button *ngIf="isAdmin" routerLink="/upload-news">Subir Noticias</ion-button>
+
+      <!-- Botón de cerrar sesión -->
+      <ion-button *ngIf="isLoggedIn" (click)="logout()">Cerrar Sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="welcome-section">
+    <h1>Bienvenido a la Comunidad Plaza Condell</h1>
+    <h2>Noticias</h2>
+
+    <!-- Grid de noticias -->
+    <div class="news-grid">
+      <div class="news-item" *ngFor="let news of newsList">
+        <div class="news-container">
+          <img [src]="news.imageBase64" alt="Noticia" class="news-image" />
+          <p class="news-description">{{ news.description }}</p>
+        </div>
+        <ion-button *ngIf="isAdmin" color="danger" (click)="deleteNews(news.id)">Eliminar</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Información de Contacto -->
+  <div class="contact-section">
+    <h2>Información de Contacto</h2>
+    <p><strong>Dirección:</strong> Plaza Condell, Juan Martínez de Rozas #1465, Concepción</p>
+    <p><strong>Teléfono:</strong> +56 9 46285617</p>
+    <p><strong>Email:</strong> luis.soto2&#64;virginiogomez.cl</p>
+    <p><strong>Horario de Atención:</strong> Lunes a Viernes, 9:00 AM - 5:00 PM</p>
+  </div>
+</ion-content>
